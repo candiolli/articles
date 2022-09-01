@@ -49,13 +49,11 @@ public class CustomerRegisterTest {
     public void register_success_verify() throws InvalidValueException {
         CustomerRegister customerRegister2 = mock(CustomerRegister.class);
 
-        when(customerRegister2.validateRealCpf(anyString())).thenCallRealMethod();
-
         CustomerVO vo = new CustomerVO("33408777004", "Silas", 123456L);
 
         customerRegister2.register(vo);
 
-        verify(customerRegister2).register(vo);
+        verify(customerRegister2, times(1)).register(vo);
         verifyNoMoreInteractions(customerRegister2);
     }
 
@@ -64,5 +62,12 @@ public class CustomerRegisterTest {
         customerRegister = mock(CustomerRegister.class);
         when(customerRegister.validateRealCpf(anyString())).thenReturn(true);
         Assert.assertTrue(customerRegister.validateRealCpf("8888"));
+    }
+
+    @Test
+    public void shouldReturnFalseToInvalidateCpf() {
+        customerRegister = mock(CustomerRegister.class);
+        when(customerRegister.validateRealCpf(anyString())).thenCallRealMethod();
+        Assert.assertFalse(customerRegister.validateRealCpf("8888"));
     }
 }
