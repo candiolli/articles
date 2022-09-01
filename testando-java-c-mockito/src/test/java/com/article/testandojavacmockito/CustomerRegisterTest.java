@@ -1,6 +1,7 @@
 package com.article.testandojavacmockito;
 
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,5 +57,12 @@ public class CustomerRegisterTest {
 
         verify(customerRegister2).register(vo);
         verifyNoMoreInteractions(customerRegister2);
+    }
+
+    @Test
+    public void validate_cpf_success() {
+        customerRegister = mock(CustomerRegister.class);
+        when(customerRegister.validateRealCpf(anyString())).thenReturn(true);
+        Assert.assertTrue(customerRegister.validateRealCpf("8888"));
     }
 }

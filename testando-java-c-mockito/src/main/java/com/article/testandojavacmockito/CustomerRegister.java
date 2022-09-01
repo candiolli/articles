@@ -1,5 +1,7 @@
 package com.article.testandojavacmockito;
 
+import br.com.caelum.stella.validation.CPFValidator;
+
 public class CustomerRegister {
 
     private CustomerRepository repository;
@@ -19,6 +21,13 @@ public class CustomerRegister {
     }
 
     protected boolean validateRealCpf(String cpf) {
-        return false;
+        CPFValidator cpfValidator = new CPFValidator();
+        try {
+            cpfValidator.assertValid(cpf);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
