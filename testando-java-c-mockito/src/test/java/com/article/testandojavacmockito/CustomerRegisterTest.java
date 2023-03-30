@@ -33,12 +33,12 @@ public class CustomerRegisterTest {
 
     @Test
     public void register_success() throws InvalidValueException {
-        Customer objectSaved = new Customer("23122100100", "Silas", 123456L);
+        Customer objectSaved = new Customer("17744845013", "Silas", 123456L);
 
         when(customerRegister.validateRealCpf(anyString())).thenReturn(true);
         when(repository.save(any(Customer.class))).thenReturn(objectSaved);
 
-        CustomerVO vo = new CustomerVO("23122100100", "Silas", 123456L);
+        CustomerVO vo = new CustomerVO("17744845013", "Silas", 123456L);
 
         CustomerVO register = customerRegister.register(vo);
         assertEquals(objectSaved.getId(), register.getId());
@@ -49,7 +49,7 @@ public class CustomerRegisterTest {
     public void register_success_verify() throws InvalidValueException {
         CustomerRegister customerRegister2 = mock(CustomerRegister.class);
 
-        CustomerVO vo = new CustomerVO("33408777004", "Silas", 123456L);
+        CustomerVO vo = new CustomerVO("17744845013", "Silas", 123456L);
 
         customerRegister2.register(vo);
 
