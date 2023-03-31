@@ -1,5 +1,14 @@
-package com.article.testandojavacmockito;
+package com.article.javajunit;
 
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,13 +20,8 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
-
 @RunWith(MockitoJUnitRunner.class)
-public class CustomerRegisterTest {
+public class CustomerRegisterTestJUnit4 {
 
     @Spy
     @InjectMocks
