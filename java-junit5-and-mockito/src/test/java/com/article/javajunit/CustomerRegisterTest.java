@@ -1,12 +1,7 @@
 package com.article.javajunit;
 
 
-import org.junit.Assert;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,7 +9,6 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
@@ -46,7 +40,7 @@ public class CustomerRegisterTest {
         CustomerVO vo = new CustomerVO("23122100100", "Silas", 123456L);
 
         CustomerVO register = customerRegister.register(vo);
-        assertEquals(objectSaved.getId(), register.getId());
+        Assertions.assertEquals(objectSaved.getId(), register.getId());
         verify(customerRegister).register(vo);
     }
 
