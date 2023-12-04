@@ -1,4 +1,4 @@
-package org.acme;
+package com.silascandiolli;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
